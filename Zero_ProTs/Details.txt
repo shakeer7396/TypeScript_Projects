@@ -453,7 +453,7 @@ class Cake extends CookingEssentials{
 
 
 **_______________________________Functions______________________________________________**
------------------------------------------------------------------------------------------------
+
 1. Function types
 2. Optional & default parameters
 3. Rest parameters
