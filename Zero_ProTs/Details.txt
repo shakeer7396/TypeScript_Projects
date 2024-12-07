@@ -439,7 +439,7 @@ class Payment{
     }
 }
 
-// Base class Example-2 -----------------
+// ** Base class Example-2 -----------------
 class CookingEssentials{
     constructor(protected gas:number, protected gasName:string)
 }
