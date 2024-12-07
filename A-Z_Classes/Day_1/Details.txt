@@ -1,0 +1,9 @@
+1. TypeScript is a SuperSet of javaScript that adds static typing and other features to enhance JavaScript development. It was developed by microsoft on Oct-1 2012, and now it is an opensource project with large community of contributors.
+
+2. -> Easy to Read         -> Easy to Write        -> Easy to Maintain
+
+3. TypeScript is a SuperSet of javaScript ( Which means any valid Js code is also valid for TS code)
+
+4. TypeScript catches errors at compile time insted of runtime, which makes debugging easier and reduces the likelihood of bugs in production.
+
+5. 

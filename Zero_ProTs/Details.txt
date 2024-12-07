@@ -1,0 +1,745 @@
+Basic types                 03-12-2024
+-----------------------------------------------------------
+// Primitives
+// Arrays
+// Tuples
+// Enums
+// Any, Unknown, Void, Null, Undefined, Never
+
+** TWO OF IMPORTANT DATA TYPES
+1.PRIMITIVES Types (number, string, boolean)
+-------------------------------
+Ex- let a="Shaik"
+    let b= 7
+    let c=true
+
+--> You copy primitives directly like
+    let d=5;
+    let e=d;
+
+
+2.REFERENCES
+------------------------
+// {} () [] Aap is brackets me se kisiko bi use kiyeto vo Reference Type hojayege
+
+Ex- let a=[1,2,3,4];
+
+--> You not copy Reference directly like
+let b=[1,2,3,4];
+let d=b;
+
+// Arrays
+-------------------------------
+let arr=[1,2,3, " Shaik" ]; let arr=[1,2,3, {name: "shaik" } ]
+// when hover it shows number || string its works in js not a right way to write like that 
+
+let arr: number[] = [1,2,3,4,5]  // Its a right way
+
+
+// Tuples
+--------------------------------
+-> Tuples is also same as arrays but some syntex change but correct value type places
+
+Eg- let arr: [string, number] = ["Shaik", 99];
+console.log(arr); //output is ["Shaik", 99]
+
+//Enums (Enumarations)
+---------------------------------
+-> App Values ko key value pairs me rakhna chahte ho vo kitne properties bi ho no problem
+-> Enums are a way to define a set of named constants, making code more readable and maintainable.
+Eg- enum UserRoles{
+    ADMIN = "admin",
+    GUEST = "guest",
+    SUPER_ADMIN = "super_admin"
+}
+
+--> In future me aap UserRoles ko use karna chahte ho then aap UserRoles. karne par sab properties aa jate hai
+
+// Any, Unknown, Void, Null, Undefined, Never
+----------------------------------------------------------------
+
+// Any (Type script me variables ko any nai rakhna chahiye it means off hojana)
+------------------------------------
+-> let a; // koie variable ko type nai bataye to vo any hai
+-> let a : number ; // Type batana ye number hai
+-> Any ko aage jake kahi nahi use kar sakte because its not a right way 
+
+let a;
+a= 4;
+a="Shaik";
+if(typesof a === "string"){
+a.toUpperCase();  // it takes any not clarity 
+}
+
+// Unknown (You have to tell any one compulsory string or number)
+----------------------------------
+let a : unknown;
+a= 7;
+a="Shaik";
+if(typesof a === "string"){
+a.toUpperCase();  // Ye string haito chalega naito nai pehle type ko check karna padega 
+}
+
+// Void ( Return type ko batane vala)
+----------------------------------
+//Function jab be banaoge to return type ko jaroor mention karna padega like number, string, etc
+function abcd(): boolean{
+    return true;
+}
+
+// Jab koie return nai karet tho void ko return karke vaha batana chahiye like
+function abcd(): void{
+    console.log("Hello TypeScript")
+}
+
+// Null (Aap kisi ko dhund te ho vo nai milti haito vo Null hai)
+------------------------------------
+let a=null // Ye Any hojati hai  so
+let a: string | null; future me dekhenge ke string hai yato null hai Union (|) ye 
+
+a="Shaik";
+a=null   // both are accepte but number is not accepted
+
+//Undefined (kisi ko value nai diye to vo undefined hoga same as Js)
+---------------------------------------
+let a : undefined;
+
+// Never (Jo kuch bi return nahi karenge vaha isko use karenge)
+---------------------------------------
+function abcd() : never{
+    while(true){}
+}
+abcd();
+// console.log("Hello");
+
+
+
+INTRODUCTION to TYPE INFERENCE & TYPE ANNOTATIONS
+----------------------------------------------------------
+* Inference (Value ko dekh ke khud type ko maloom karna ye hai type Script karleta hai)
+let a = 7; // its a number
+
+* Annotation (Type ko batane vale )
+let a : string | boolean | number;  unoin(|)  in future all are allowed;
+
+
+// Understanding type Inference
+------------------------------------------------
+->Type inference allows TypeScript to automatically determine variable types based on their value or usage.
+
+let a: boolean;
+function abcd(a: number, b: string): void{} // and detailed there in front
+
+
+//Interfaces & Type Aliases [Object ka Shapes batana, Khud k user define types batana]
+* Defining Interfaces
+* Using interfaces to define object shapes
+* Extending interfaces
+* Type Aliases
+* Intersection types
+
+//* Defining Interfaces using with the interface name
+->Interfaces define a structure for objects or classes, specifying property names, types, and methods without implementation.
+interface User {
+    name: string,
+    email: string,
+    password: string,
+     gender?: string   // aisa rakhne se ye optional hojata use karo ya na karo
+}
+
+// * Using interfaces to define object shapes
+// interface nichhe vale obj ka shakal bata ta hai
+const obj ={
+    name: "Shaik",
+    email: "shaik123@gmail.com",
+    password: abcd,  
+} 
+
+// kaisa use karenge function batata hai
+// obj. lagao 3 bi  dikhte hai
+function abcd(obj :User){
+}
+abcd({name:"shaik", email: "shaik123@gmail.com", password: abcd,});
+
+
+// * Extending interfaces (2 objects there then only possible means parent ka child lena)
+
+interface User{
+    name: string,
+    email: string,
+    password: string
+}
+
+interfac Admin extends User{
+    admin: boolean
+}
+
+function abcd(obj : Admin){  // User kareto user k only aate but Admin kare tho dono k aate
+obj.  //isme sab dikhte
+}
+
+
+// * Type Aliases  
+
+// (2 same name k interfaces banaye with different data ho to vo Single me merge hojate hai)
+eg- interface Abcd{
+    name: string
+}
+interface Abcd{
+    email: string
+}
+
+function abcd(obj : Abcd){
+obj.  //isme sab dikhte
+}
+
+* Type ka kaam hai type ko create karna like number boolean string etc inko use karna
+    merger bana na and union ko create karna
+* Interface ka kaam hai object ka shape banana, kaisa dikhega
+
+// ( | ) Union, and ( & ) Intersection---------------
+--------------------------------------------
+
+let a: string | null; // union string or null 
+let a: string & null; // Intersection string and null
+
+Eg- 
+type User = {
+    name:string,
+    email:string
+}
+
+type Admin =User & {
+    getDetails(user : string) :void  
+}
+
+function abcd(a: Admin){
+    a.  //Aisa karne par user k and admin k both dikhte hai
+}
+
+
+////----------------------------------------- Classes and Objects-------------------------
+1. Class Definition
+2. Parameter properties
+3. Opitional properties
+4. Constructors
+5. Access modifers (public, private, protected)
+6. Readonly properties
+7. Getters and setters
+8. Static members
+9. Abstract classes and methods
+
+
+1. Class Definition ( how to write a class)
+-------------------------------
+class Device {
+    name: "TV",
+    price: 20000,
+    category: "digital
+}
+
+let a= new Device(); // Storing object data with using a variable and new Keyword with obj name
+let b= new Device();
+
+
+2. Parameter properties
+---------------------------------------
+--> Old way
+public name;
+public age;
+class User{
+    constructor(name:string, age:number){
+        this.name=name;
+        this.age=age
+    }
+}
+
+--> New easy way in a single line all
+class User{
+    constructor(public name:string, public age:number, public gender:string){}
+}
+
+
+3. Optional properties
+---------------------------------------
+class User{
+    constructor(public name:string, public age:number, public gender?:string){}
+}
+let a=new User("Shaik",25,'Male');
+let b=new User("sham",20) // there without asking gender its running
+
+
+4. Constructors ( It is a machine, product maker, )
+--------------------------------
+* Ek aisi machine jo produce kar rahi hai final consumable product this is constructor.
+* class ko chalane se ( run karne se) first constructor run hota hai
+* constructor vo mangta hai jo hame set karna chate hai
+
+class BottleMaker{
+    constructor(public name:string, public price:number, public color:string,){} //add many
+}
+let b1 = new BottleMaker("Milton",1000,"red"); //send the value from there for constructor based give
+let b2 = new BottleMaker("Silcon",900,"blue");
+let b3 = new BottleMaker("Rayan",1200,"green");  // create number of new values with class & constructor
+
+---> * If you want to change something values in future you target that variables and change it easily like that ki
+-->b3.name="Stailnes Steel";
+    b2.color="yellow";
+
+
+-> class Human{
+    constructor(public name:string, public isHandsome:boolean){}
+}
+let out = new Human("Shine",true)
+
+
+// This Key word
+------------------
+-> class k andr alag alag variables ko banate hai then vusko class k andr dusre methods me kuch changes ya access karna chahte haito This ka reference dena zarori hai
+
+DEMO :--
+class Abcd{   //class
+    name = "Shakeer";  // variable
+
+    updateDetails(){    // function means method (class k Andr function banaye to method bolte)
+    this.name = "Shaik Shakeer";
+    // console.log(this.name);
+    this.changeSomeMore;
+
+    changeSomeMore(){   // Method inside another access also using this
+        console.log("Iam working on This");
+
+        let a=15;
+        console.log(a); // You can access directly local variables inside the method
+
+        this.addSome = 15 // method k andr se kisi bahar ki property ko nai bana sakte
+    }
+    }
+}
+
+
+3. Access modifers (public, private, protected)
+---------------------------------------------------------
+--> public class me ho ya class k bahar ho vusko kaha b ho use kar sakte hai
+-> Class k ander job b ho vusko public se b aur private se bi access kar sakte hai code me warning aayega but run hota hai
+class BottleMaker{
+    constructor(publiv name:string){}
+    getValue(){
+        console.log(this.name)   // printing output in the console
+    }
+}
+let b1=new BottleMaker("chilled");
+b1.getValue()
+
+--->
+class BottleMaker{
+//you add private its extended for other class it works but through error use only same Class
+    public halua: string="halal";   
+    constructor(private name:string){}
+}
+
+class MetalBottleMaker extends BottleMaker{
+    constructor(name:string){
+        super(name)
+    }
+    getValue(){
+        console.log(this.name,this.halua) // both are printing in console
+    }
+}
+// passing data from MetalBottleMaker constructor,super to  BottleMaker constructor ->Then printing with help of extends class method getValue()
+let b2=new MetalBottleMaker("Chilli");
+b2.getValue();
+
+
+**protected *--------------------
+--> ye help karta hai error ko nai dikhata isko same class me & extended class me use kar sakte but class k bahar nai use kar sakte like (b3.name="Some other name")
+
+class BottleMaker{
+    proteted name = "Milton";
+}
+class MetalBottleMaker extends BottleMaker{
+    public material ="metal";
+
+    changeNmae(){
+        this.name ="Some Name"
+    }
+}
+let b3=new MetalBottleMaker();
+b3.name = "Some other name";  // there shows error
+
+
+4. Readonly properties (Change nai karne k liye use karte)
+-----------------------------------
+class User{
+    constructor(public readonly name:string){}
+
+    changeName(){
+        this.name="Shaik";
+    }
+}
+let u1 =new User("Shafi");
+u1.changeName();  // Ye change karta hai but error show karta iska kaam vahi hai rokna nai
+
+
+7. Getters and setters
+------------------------------------------
+--->Getters(class k andr k values ko without name change ya get karna using _  & get k samne jo name hai vusko ham use karna padta hai)
+class User{
+    constructor(public _name:string, public _age:number,public gender:string){}
+
+    get name(){
+        this._name;
+    }
+    get age(){
+        this._age;
+    }
+    checkGender(){
+        this.gender;
+    }
+}
+let u1= new User("Shaik",25);
+u1.name;    //Aap yaha direct output le sakte hai console same name without calling the method 
+u1.age;
+u1.checkGender(); //Other name with calling the method 
+
+---> Setters(Value ko Set karna same as get but ye set hai Iske k samne jo name hai vusko ham use karna padta hai)
+
+class User{
+    constructor(public _name:string, public _age:number,public gender:string){}
+
+    set name(value:string){
+        this._name=value;
+    }
+}
+let u2 = new User("Hari"); // set directly in console using u2.name="Harish";
+
+
+8. Static Members (Without using new instance object class variables & methods outside class k b use karna)
+-----------------------------------------
+class App{
+    static version=1.0;
+
+    static getRandomNumber(){
+        return Math.random();
+    }
+}
+// let b1= new App() // Isko use karne ki jarurat nahi direct access kar sakte hai console me  call karo ->App.version  ->App.getRandomNumber
+
+
+9. Abstract classes and methods
+-------------------------------------
+---> These are the base class for not changing fixed for other sub methods
+
+// Base class Example-1 ------------- Below all payments using PhonePay, Gpay, Paytm etc.
+class Payment{
+    constructor(protected amount:number, protected account:number){
+        isPaymentValid(amount:number){
+            return this.amount>0;
+        }
+    }
+}
+
+// Base class Example-2 -----------------
+class CookingEssentials{
+    constructor(protected gas:number, protected gasName:string)
+}
+
+class Dal extends CookingEssentials{
+
+}
+class Cake extends CookingEssentials{
+
+}
+
+
+**_______________________________Functions______________________________________________**
+-----------------------------------------------------------------------------------------------
+1. Function types
+2. Optional & default parameters
+3. Rest parameters
+4. Overloads
+
+Functions()  
+------------------------------------
+--> Functions khud chalte nahi hai ham jab bole tab chalte hai
+--> Login ka code ek function me likh diye vuso jitne baar bi chahe jaha chahe vaha use karlo
+
+1. Funcrtion types
+-----------------------------------
+//-> [Its a javaScript function working] 
+
+function abcd(){    //()--> This bracter inside using parameters
+console.log("Its a JavaScript Function");
+}
+abcd()              --->()--> This bracter inside using arguments
+----------------
+//-> [Its a TypeScript function working] 
+function abcd(): void{  //using void koie nai return karte jab use karte hai return hi type use
+console.log("Its a TypeScript function");
+}
+abcd();
+
+(Eg-1):--
+function declare(name:string, age:number, cb(arg:string)=>void){
+cb("Shakeer");
+}
+declare("Shaik", 25, (arg:string)=>{
+    console.log("Hey")
+})
+
+(Eg-2):--
+function declare(name:string, age:number, cb(arg:string)=>void){
+cb("Shakeer");
+}
+declare("Shaik", 25, (arg:string)=>{
+    console.log(arg)
+})
+
+
+2. Optional & default parameters
+-----------------------------------------------
+A. Optional parameters  (using ? )
+
+function abcd(name:string, age:number, gender?:string){
+    console.log(name,age,gender);
+}
+abcd("Shakeer", 25,"male");
+abcd("lagbataq", 22);
+
+B. Default parameters  (gender ? : string="not intrested" ) by default its printing 
+
+function abcd(name:string, age:number, gender:string="not intrested"){
+    console.log(name,age,gender);
+}
+abcd("Shakeer", 25,"male");
+abcd("lagbataq", 22);
+
+
+3. Rest parameters (...)-->Rest/Spread 
+A. --> Rest ... using in parameters place to taking multiple arguments then converts all as an  single variable as an array then using Rest operator.
+-----------------------------------------
+function abcd(...args: number[]){   //arguments names haito number k place me string kardo
+    console.log(args[0]);  //printing the storing variable array
+    console.log(args);
+}
+abcd(1,2,3,4,5,6,7);
+
+B. --> Spread operator (...spread) using this operator for merge multiple arrays into a single arr
+--> Taking duplicate array from one array to another arry
+Eg- var arr=[1,2,3,4,5];
+    var arr1=[...arr];
+
+
+5. Function Overloads
+---------------------------------------------
+function abcd(a:string):void;
+function abcd(a:string, b:number):number;
+
+//calling above Functions
+function abcd(a:any, b?:any){
+    if(typeof a === "string" && b == undefined){
+    console.log("Its a non returning function")
+    }
+    if(typeof a === "string" && b === "number"){
+        return 123456
+    }
+    else throw new Error("Something is wrong");
+}
+abcd("Only string");
+abcd("string & number",789);
+
+
+-------------------------------------------Generics---------------------------------------------
+
+1. Generic Functions
+2. Generic interfaces
+3. Generic classes
+
+--> Generics Uses :- Hame ek function banana hai jo ki accept karega koie b value all types and usey print karega (Any nai use karte)
+
+--> Hum ek function ko use karte waqt bata sakte hi ki function argument ko kis type se treat kare
+* Ex - 1 -----------
+function abcd<T>(a:T){ // yaha <T> kuch be le sakte, but same rakh na yaha bi a:T
+
+}
+abcd<string>("Hello");
+abcd<number>(123);
+
+--> Generics sab ko accept karta hai 
+* Ex - 2 -----------
+function abcd<S>(a:S, b:string, c:number){
+    console.log(a,b,c);
+}
+
+abcd<string>("Idly", "Dosa", 2)
+
+* Ex - 3 -----------
+function log<S>(val:S){
+    console.log(val);
+}
+
+log("Idly") // yaha pe Generic mention karne ki zaroorat nahi hai its a TypeScript power
+log(25);
+
+
+2. Generic Interface  (Interface means Har Object ka ek shape dikhane use karte)
+--------------------------------------
+interface Halwa<T>{  // Creating
+    name:string;
+    age:number;
+    key:T;
+}
+function abcd(obj:Halwa<string>){       //Using Generic interface
+console.log(obj.name, obj.age, obj.key);
+}
+abcd({name:"Sham", age:25, key:"123456"});
+
+
+3. Generic classes  (classes me Generics use karna)
+--------------------------------------
+class BottleMaker <T>{
+    constructor(public key: T){}
+}
+let b1 = new BottleMaker<string>("Metal");
+let b2 = new BottleMaker<number>(10);       //ham data bejte time hi mention karenge type ko.
+
+console.log(b1);
+console.log(b2);
+
+---> In function Generic return type --------------
+
+function abcd<T>(a:T, b:T): T {
+    return a; //working
+    return b;  //working
+    //return "Chatni" ; // Not working
+    return<T> "Vada";  // Working not correct now
+    
+    return "Chatni" as T ; // Working Generics type
+    }
+    // abcd<string>("Idly", "Dosa")
+
+    let output=abcd<string>("Idly", "Dosa") // Print the return value using var single print Top-Btm
+    console.log(output);
+
+   // console.log(abcd<string>("Idly", "Dosa")); // Printing the return value directly top to btm
+
+---> In function Generi  return not work in if condition--------------
+
+function hotel<T>(a:T, b:T) :void{
+    if(typeof b=="string"){    // In this place T is not working "string" only working
+        console.log(b.toUpperCase());
+    };
+}
+hotel<string>("Idly", "Dosa");
+
+
+----------------------------------Modules-----------------------------------------------
+1. Exporting and importing Modules  
+(using classes or functions from one component to another component mutiple times we dont write code for every time use where you want)
+-------------------------------------
+--> create one payment.js file then take 2 functions like below and export karo vunko
+--> Ye functions ko import karlo app.ts me then print karlo
+
+[Payment.js]
+export function addPayment(val:number){
+    console.log(val);
+}
+export function getDetails(){}
+
+[app.ts]
+import {addPayment,getDetails} from "./Payment.js";
+addPayment(500);
+
+
+2.Default Exports
+---------------------------
+--> Create class with constructor in payment.js export it by default like
+--> import that class to app.ts then print it
+
+[Payment.js]
+export default class Payment{
+    onstructor(public value:number){}
+}
+
+[app.ts]
+import Payment from "./Payment.js";
+
+let a= new Payment("200");
+let b= new Payment("500");
+console.log(a, b);
+
+
+-----------------------------  Type Assertions -------------------------------------------------
+1. Type casting
+2. Non-null assertion operation
+
+--> Type assertion ka matlab, Ts ko batana particular cheej ka type kya hai, Ye ham jab karna   
+     hai jab hum Ts se jyada vus value ka type ko jante ho
+---> Type assertion is used when you know more about the variable or value as compare to Ts.
+
+let a:any = 12;
+(a as String). // There showing all string related values
+(<number>a).  // Another way There showing all number related values
+
+1. Type casting
+--------------------------------------------
+--> Converting string to a number check typeof also in console
+let a = Number("12");
+console.log(a);
+
+
+2. Non-null assertion operation
+----------------------------------------------
+--> Jab hamko confirm hai ki diye gaye value maloom hai jab use karte hai !
+let a : null | undefined | string ;
+a = "Check Value";
+console.log(a.length) // working  // output-11
+console.log(a!.length) // working  // output-11  -> Aisa lagane se ye garente hai ki null & undefined nai ho sakti  (Used rerely)
+
+
+------------------------- Type Guards & TypeScript Utility Types  -------------------------
+--> Type Guards means -> Type narrowing -> Hamko clear nahi hai ki number hai ya string hai jab check karne ke liye if else if me typeof operator use karke vus k all methods ko use karte
+
+1. Using A. typeof and B. instanceof
+-------------------------------------------
+A. typeof------------------
+
+function abcd(args : string | number | any){
+    if(typeof args == "number"){
+        return "number";
+    }
+    else if(typeof args == 'string'){
+        return 'string';
+    }
+    else{ throw new Error('Not a correct one')}
+}
+console.log(abcd("Helllo"));
+console.log(abcd(1234));
+console.log(abcd(true));
+
+A. instanceof------------------
+
+// Hamare paas dono classes ho ham dono ke instance ko ek function me paas karsakte ho 
+class TvKaRemote {
+    TvSwitchOff() {
+        console.log("Switch off Tv");
+    }
+}
+class CarKaRemote {
+    CarSwitchOff() {
+        console.log("Switch off Car");
+    }
+}
+let tv = new TvKaRemote();
+let car = new CarKaRemote();
+
+// Above classes inside methods are calling with using a new function with help instanceof 
+
+function switchOffKaro(device : TvKaRemote | CarKaRemote){
+if(device instanceof TvKaRemote){
+    device.TvSwitchOff();
+}
+else if(device instanceof CarKaRemote){
+device.CarSwitchOff();
+}
+}
