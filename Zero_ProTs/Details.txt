@@ -218,7 +218,7 @@ function abcd(a: Admin){
 }
 
 
-////----------------------------------------- Classes and Objects-------------------------
+////------------------------------------ Classes and Objects--------------------------------
 1. Class Definition
 2. Parameter properties
 3. Opitional properties
@@ -233,9 +233,9 @@ function abcd(a: Admin){
 1. Class Definition ( how to write a class)
 -------------------------------
 class Device {
-    name: "TV",
-    price: 20000,
-    category: "digital
+    name: "TV";
+    price: 20000;
+    category: "digital"
 }
 
 let a= new Device(); // Storing object data with using a variable and new Keyword with obj name
@@ -258,7 +258,8 @@ class User{
 class User{
     constructor(public name:string, public age:number, public gender:string){}
 }
-
+let a = new User("Shakeer", 25, "m"); //pure object ko new keyword k instance, & print karna
+console.log(a.age);  // only object k single value ko call karna :- output 25 
 
 3. Optional properties
 ---------------------------------------
@@ -304,16 +305,17 @@ class Abcd{   //class
     updateDetails(){    // function means method (class k Andr function banaye to method bolte)
     this.name = "Shaik Shakeer";
     // console.log(this.name);
+
     this.changeSomeMore;
 
-    changeSomeMore(){   // Method inside another access also using this
+     changeSomeMore(){   // Method inside another method access also using this
         console.log("Iam working on This");
 
         let a=15;
         console.log(a); // You can access directly local variables inside the method
 
         this.addSome = 15 // method k andr se kisi bahar ki property ko nai bana sakte
-    }
+     }
     }
 }
 
@@ -321,9 +323,10 @@ class Abcd{   //class
 3. Access modifers (public, private, protected)
 ---------------------------------------------------------
 --> public class me ho ya class k bahar ho vusko kaha b ho use kar sakte hai
--> Class k ander job b ho vusko public se b aur private se bi access kar sakte hai code me warning aayega but run hota hai
+-> Class k ander jab b ho vusko public se b aur private se bi access kar sakte hai code me warning aayega but run hota hai
+
 class BottleMaker{
-    constructor(publiv name:string){}
+    constructor(public name:string){}
     getValue(){
         console.log(this.name)   // printing output in the console
     }
@@ -355,12 +358,12 @@ b2.getValue();
 --> ye help karta hai error ko nai dikhata isko same class me & extended class me use kar sakte but class k bahar nai use kar sakte like (b3.name="Some other name")
 
 class BottleMaker{
-    proteted name = "Milton";
+    protected name = "Milton";
 }
 class MetalBottleMaker extends BottleMaker{
     public material ="metal";
 
-    changeNmae(){
+    changeName(){
         this.name ="Some Name"
     }
 }
