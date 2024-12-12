@@ -29,7 +29,8 @@ A. Create sum.js file and do code there && create sum.test.js for testing the co
 sum.test.js
 import sum from "./sum";
 
-//Test function takes three parameters 1-message, 2-call back func (write inside tesing output), 3-setTimeout for setting time for how much time after output will show. Add after the func },there);
+//Test function came from jest(); 3 parameters 1,2** Mandatory 3 is optional(setTimeout)
+//Test function takes three parameters 1-message, 2-call back func (write inside tesing output logic), 3-setTimeout for setting time for how much time after output will show. Add after the func },there);
 
 test("testing for sum function-1",()=>{
 expect(sum(10,20)).toBe(20)  //toBe means muje itna output chahiye batana hai
@@ -50,4 +51,20 @@ Understanding React Test Structure
 -> How to render the component
 -> How tests working with RTL
 -> How test finding UI elements
+
+--> All librariees are installed globally but we need to import some places
+1.-> import { render, screen } from '@testing-library/react'; in App.js its comes by default
+    -> render use karte hai component ko render karne k liye and screen use karte hai screen k vupar jo kuch be hai vusko test ko test karna chahte ho vusko screen k help se kar sakte hai
+2.-->Jis component ko hum test karna chaahte hai vusko import karna hai
+    -> Ek file k ander multiple files (components) ko test kar sakte hai [no problem].
+
+App.js
+    import { render, screen } from '@testing-library/react'; 
+import App from './App';
+
+test('renders learn react link', () => {    // TEST FUNCTION WITH 3 PARAMETERS
+  render(<App />); // RENDERING THE COMPONENT WITH NAME
+  const linkElement = screen.getByText(/learn react/i);     // SCREEN PE JO HAI VUSKE BASE PE TEST KARNA LIKE learn react inside this component showing in the screen RUNS PASS OR FAIL
+  expect(linkElement).toBeInTheDocument();  // EXPECTED DOCUMENT ME JO HAI VO TEST KARNA CHAHIYE
+});
 
