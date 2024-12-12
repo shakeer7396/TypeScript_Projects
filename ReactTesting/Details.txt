@@ -71,7 +71,7 @@ test('renders learn react link', () => {    // TEST FUNCTION WITH 3 PARAMETERS
   expect(linkElement).toBeInTheDocument();  // EXPECTED DOCUMENT ME JO HAI VO TEST KARNA CHAHIYE
 });
 
-#-> 5 Write Firsst React Test
+#-> 5 Write First React Test
 ----------------------------------------
 -> Make new Test function
 -> Write test case for check text on screen
@@ -113,6 +113,14 @@ function App() {
 }
 
 export default App;
+
+#-> 6 Test Input Box  (how to test input boxes)
+----------------------------------------
+-> Make input box in App Component
+-> Write test case function
+-> The test input box is present are not
+-> Test input box
+    *name, placeholder, id, value, type
 
 
 
