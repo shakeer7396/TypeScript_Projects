@@ -1,4 +1,4 @@
-import sum from "./sum";
+import sum from "../Basic_Js/sum";
 
 //Test function takes three parameters 1-message, 2-call back func (write inside tesing output), 3-setTimeout for setting time for how much time after output will show. Add after the func },there)
 test("testing for sum function-1",()=>{

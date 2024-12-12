@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* You can add anything in start and end ogf the given text but not middle expected text is matching or not it will check these things */}
+      <p>ABC First React test Case ABC123a</p>
+      <p>Software Testing</p>
+      <img
+        title="GoogleImage"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrfwAhgmyiHHQ7kj-aEbk9AGCKcwo0wYeuwg&s"
+      />
     </div>
   );
 }
