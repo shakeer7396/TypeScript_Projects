@@ -253,7 +253,7 @@ describe.skip("API test case group",()=>{
 })
 
 
-#-> 8 Test Onchange Event With Input Box  (Input filed k ander events ko kaise call karte)
+#-> 9 Test Onchange Event With Input Box  (Input filed k ander events ko kaise call karte)
 ----------------------------------------
 -> Make input box in the component
 -> Define state and use with onChange event
@@ -288,3 +288,41 @@ it("Input onChange event testing", () => {
   expect(InpuOnChangetest.value).toBe("a test"); // Without default also use only "a"
 });
 
+
+#-> 10 Test Click Event With Button  (Button Event se kya use kar sakte dekhte hai)
+----------------------------------------
+-> Make button and state in the component
+-> Update state with button click event
+-> Import component in test file
+-> Write code for tesrt click event
+-> Run test case
+
+App.js
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [add, setAdd] = useState("");
+  return (
+    <div className="App">
+      {/*Changing the Event with the help of clicking event */}
+      <h1>Test Click Event With Button</h1>
+      <button onClick={()=>setAdd("Updated Data showing in the Dom")}>Update Data</button>
+      <h2>{add}</h2>
+    </div>
+  );
+}
+
+export default App;
+
+App.test.js
+import{fireEvent, render,screen} from "@testing-library/react";
+import App from "./App"
+// Checking while clicking the button data is showing in the dom or not
+it("Click event test case",()=>{
+  render(<App />);
+  const btn=screen.getByRole("button"); //checking screen
+  fireEvent.click(btn);  //Clicking the event
+  expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument(); //expt Dom output
+
+})

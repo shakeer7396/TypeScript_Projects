@@ -1,10 +1,10 @@
-import App from "./App";
-import { fireEvent, render, screen } from "@testing-library/react";
-
-it("Input onChange event testing", () => {
+import{fireEvent, render,screen} from "@testing-library/react";
+import App from "./App"
+// Checking while clicking the button data is showing in the dom or not
+it("Click event test case",()=>{
   render(<App />);
-  let InpuOnChangetest = screen.getByRole("textbox");
-  // fireEvent will help to changing the value 
-  fireEvent.change(InpuOnChangetest, { target: { value: "a" } }); // Targetting the value
-  expect(InpuOnChangetest.value).toBe("a");
-});
+  const btn=screen.getByRole("button");
+  fireEvent.click(btn);
+  expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument();
+
+})

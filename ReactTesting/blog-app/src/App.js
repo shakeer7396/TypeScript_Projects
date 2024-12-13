@@ -5,8 +5,10 @@ function App() {
   const [add, setAdd] = useState("");
   return (
     <div className="App">
-      {/*Changing the value with the input box using onChange */}
-      <input type="text" value={add} onChange={(e) => setAdd(e.target.value)} />
+      {/*Changing the Event with the help of clicking event */}
+      <h1>Test Click Event With Button</h1>
+      <button onClick={()=>setAdd("Updated Data showing in the Dom")}>Update Data</button>
+      <h2>{add}</h2>
     </div>
   );
 }
