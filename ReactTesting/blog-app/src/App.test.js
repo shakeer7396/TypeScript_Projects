@@ -1,6 +1,7 @@
 import {render, screen} from "@testing-library/react";
 import App from "./App";
 
+{/*Checking with screen Reading text */}
 test("Test First React Test Case", ()=>{
   render(<App />)
   const text = screen.getByText(/First React Test Case/i); //Its a case sensitive but using /i acpt C&c
@@ -12,6 +13,7 @@ const text2 = screen.getByText(/Software Testing/i);
 
 });
 
+{/*Checking with the input box Testing*/}
 test("Testing input box", ()=>{
   render(<App />)
   let checkInput = screen.getByRole("textbox"); //input is showing or not checking
