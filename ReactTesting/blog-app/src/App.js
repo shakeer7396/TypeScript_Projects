@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       {/*Changing the Event with the help of clicking event */}
-      <h1>Test Click Event With Button</h1>
+      <h1>SnapShot Testing</h1>
       <button onClick={()=>setAdd("Updated Data showing in the Dom")}>Update Data</button>
       <h2>{add}</h2>
     </div>

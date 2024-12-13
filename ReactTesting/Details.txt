@@ -417,3 +417,25 @@ export function cleanDb(){
 beforeEach(()=>{
   cleanDb()
 })
+
+
+#-> 13 Snapshot testing (Ye most imp hai)
+----------------------------------------
+-> What is snapshot testing ? Examples
+-> When this is useful
+-> How to update snapshot
+
+App.js Same as above one but App.test.js is changed
+App.test.js
+import {render} from "@testing-library/react";
+import App from "./App";
+test("Snapshot Tesing",()=>{
+  const container = render(<App />)
+  expect(container).toMatchSnapshot();
+})
+
+--> test case run karte hi ye automatic se Snapshot file create kar leta hai
+--> Snapshot testing jab use karte hai pura app develop hogaya final deployment me jana hai vusse pehle Snapshot testing test karta hai kahi errors to miss nahi huwe check karne k liye.
+--> Koie errors mile by mistake huwe to app sahi kar sakte hai
+--> Koie errors nai aap ne jaan buj kar requirement change kare hai to just u press kardo
+--> Vo new code Snapshot file me update hojaye ga
