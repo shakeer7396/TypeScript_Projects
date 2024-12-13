@@ -326,3 +326,19 @@ it("Click event test case",()=>{
   expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument(); //expt Dom output
 
 })
+
+
+#-> 11 File and Folder naming conention  (File and folder ka name kaisa hona chahiye)
+----------------------------------------
+-> What file name we can use for the test case file
+-> Folder name for testing files
+-> Run Test case with naming convention
+
+* file_name.test.js
+* file_name.spec.js
+* file_name.spec.jsx
+--> These all are for accepted file names for testing (samjta hai k ye test files hai) but
+** __tests__  --> It is a folder name (Iske ander jo b file hota hai vo test file hi hota .test nahi likh na padega every file ko vo test file hi samajta)
+
+--> Check with same app.test.js code but file will be change as per above name all are working plese try to check with folder name also 
+
