@@ -342,3 +342,78 @@ it("Click event test case",()=>{
 
 --> Check with same app.test.js code but file will be change as per above name all are working plese try to check with folder name also 
 
+
+#-> 12 Before and After hooks  (Ye jest k hooks hai Unit test cases likhne me help karte hai)
+----------------------------------------
+-> Use of before and after hooks
+-> beforeAll and beforeEach
+-> AfterAll and afterEach
+-> Examples
+
+App.js Same as above one but App.test.js is changed
+App.test.js
+import{fireEvent, render,screen} from "@testing-library/react";
+import App from "./App"
+
+// Using before & after hooks using with examples
+
+
+  // calling the function once before running the all test case
+// beforeAll(()=>{
+//   console.log("** Before all hooks ** ")
+// })
+
+// calling the function once before running the Each test case
+// beforeEach(()=>{
+//   console.log("## Before Each hooks ## ")
+// })
+
+// Checking while clicking the button data is showing in the dom or not
+it("Click event test case",()=>{
+  console.log("TestCase-1");
+  render(<App />);
+  const btn=screen.getByRole("button");
+  fireEvent.click(btn);
+  expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument();
+
+})
+// Checking while clicking the button data is showing in the dom or not
+it("Click event test case-2",()=>{
+  console.log("TestCase-2");
+  render(<App />);
+  const btn=screen.getByRole("button");
+  fireEvent.click(btn);
+  expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument();
+
+})
+// Checking while clicking the button data is showing in the dom or not
+it("Click event test case-3",()=>{
+  console.log("TestCase-3");
+  render(<App />);
+  const btn=screen.getByRole("button");
+  fireEvent.click(btn);
+  expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument();
+
+})
+
+// calling the function once after running the all test case
+// afterAll(()=>{
+//   console.log("afterAll Hooks running")
+// })
+
+// calling the function once after running the Each test case
+afterEach(()=>{
+  console.log("afterEach Hook Running Every TestCase")
+});
+
+
+--> Create server.js file then code it
+export function cleanDb(){
+    console.log("DataBase Cleaner")
+}
+
+--> import this in App.test.js
+//Cleaning the database using with simple logic for beforeEach test case
+beforeEach(()=>{
+  cleanDb()
+})
