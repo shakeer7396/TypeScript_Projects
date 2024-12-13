@@ -138,3 +138,153 @@ test("Testing input box", ()=>{
   expect(checkInput).toHaveAttribute("type","text");
   expect(checkInput).toHaveAttribute("value","Shaik Shafi");
 })
+
+
+#-> 7 Test Case Run Options  (Test case run karne k liye options)
+----------------------------------------
+-> How to run specific test files
+-> What is watch mode
+-> How to run the failed test case
+-> How to run all test className
+-> How to quit watch mode
+-> How to filter test files for run
+-> How to filter test case
+
+** Code below
+--> Copy App.test.js file code and Create another file Other.test.js then paste it run npm run test
+--> running all tests then press(w) to show all commands press(p) then enter file name for filter
+--> press(t) then enter test name message any word it filters that in both test functions
+--> press(f) for failed test cases details, press(q) for comming out of the test or clossing the test
+--> press(a) to rull all the files and test cases
+--> Test Suites means -> Seperate test files,  Tests means -> All Test cases in all files
+
+
+#-> 8 Test Grouping With Describe  (Test cases ko grouping kaise karte)
+----------------------------------------
+-> What is Describe
+-> How to make test cases Grouping
+-> Run test case with Describe
+-> Skip in Describe
+-> Only in Describe
+-> Nested Describe
+
+--> Describe kato Alag alag functionalities to define karne ka like UI, API, Functionality etc 
+--> Describe k ander test cases ko likhte hai like nested if
+
+//Creating a describe method for running particular UI group test cases
+describe("UI test case group",()=>{
+  test("test case 1",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  test("test case 2",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  test("test case 3",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+})
+--> Alag alag groups banana konsa group hona vo ek hi run kar sakte hai time ko save karna hai
+
+//Seperate group for API test cases with Another describe method
+describe("API test case group",()=>{
+  test("API test case 1",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  test("API test case 2",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  test("API test case 3",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+})
+
+
+--> Only means bahut test cases hai Sirf ek hi ko run karna chahte ho then use this all skip only 1 running 
+
+describe.only("API test case group",()=>{
+  test("API test case 1",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  test("API test case 2",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  test("API test case 3",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+})
+--> Skip b kar sakte ek group me bahut errors hai vusko run nai karna no time jab use karte
+*** Skip also same as above just change [describe.skip]
+
+--> Ek Describe k ander another ko Describe ko use karna both and One group k ander another group ko same aisa hi add kae sakte hai both are working
+
+describe.skip("API test case group",()=>{
+  test("API test case 1",()=>{
+    render(<App />)
+    let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+    expect(checkInput).toHaveAttribute("name","username");
+  })
+  //Nested Describe method with example
+  describe("Inner Describe Method",()=>{
+    test("Fetching test case 1",()=>{
+      render(<App />)
+      let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+      expect(checkInput).toHaveAttribute("name","username");
+    })
+  })
+ 
+})
+
+
+#-> 8 Test Onchange Event With Input Box  (Input filed k ander events ko kaise call karte)
+----------------------------------------
+-> Make input box in the component
+-> Define state and use with onChange event
+-> Import Component in test file
+-> Write code for test case
+-> Run test case
+
+App.js
+import React, { useState } from "react";
+
+function App() {
+  const [add, setAdd] = useState("");
+  return (
+    <div className="App">
+      {/*Changing the value with the input box using onChange */}
+      <input type="text" value={add} onChange={(e) => setAdd(e.target.value+" test")} />//Without default also use only input without using (+" test") 
+    </div>
+  );
+}
+
+export default App;
+
+App.test.js
+import App from "./App";
+import { fireEvent, render, screen } from "@testing-library/react";
+
+it("Input onChange event testing", () => {
+  render(<App />);
+  let InpuOnChangetest = screen.getByRole("textbox");
+  // fireEvent will help to changing the value 
+  fireEvent.change(InpuOnChangetest, { target: { value: "a" } }); // Targetting the value
+  expect(InpuOnChangetest.value).toBe("a test"); // Without default also use only "a"
+});
+

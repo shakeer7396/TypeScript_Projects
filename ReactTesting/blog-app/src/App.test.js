@@ -1,28 +1,10 @@
-import {render, screen} from "@testing-library/react";
 import App from "./App";
+import { fireEvent, render, screen } from "@testing-library/react";
 
-{/*Checking with screen Reading text */}
-test("Test First React Test Case", ()=>{
-  render(<App />)
-  const text = screen.getByText(/First React Test Case/i); //Its a case sensitive but using /i acpt C&c
-const title = screen.getByTitle("GoogleImage");
-const text2 = screen.getByText(/Software Testing/i);
-  expect(text).toBeInTheDocument();
-  expect (title).toBeInTheDocument();
-  expect (text2).toBeInTheDocument();
-
+it("Input onChange event testing", () => {
+  render(<App />);
+  let InpuOnChangetest = screen.getByRole("textbox");
+  // fireEvent will help to changing the value 
+  fireEvent.change(InpuOnChangetest, { target: { value: "a" } }); // Targetting the value
+  expect(InpuOnChangetest.value).toBe("a");
 });
-
-{/*Checking with the input box Testing*/}
-test("Testing input box", ()=>{
-  render(<App />)
-  let checkInput = screen.getByRole("textbox"); //input is showing or not checking
-  let checkInputPlaceHolder=screen.getByPlaceholderText("Enter User Name")
-
-  expect(checkInput).toBeInTheDocument();
-  expect(checkInputPlaceHolder).toBeInTheDocument();
-  expect(checkInput).toHaveAttribute("name","username");
-  expect(checkInput).toHaveAttribute("id","userId");
-  expect(checkInput).toHaveAttribute("type","text");
-  expect(checkInput).toHaveAttribute("value","Shaik Shafi");
-})
