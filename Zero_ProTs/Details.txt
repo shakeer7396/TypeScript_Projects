@@ -1,3 +1,16 @@
+TypeScript - Zero_Pro
+Link - https://youtu.be/lVzb6pmel_E?si=uzsQQ3WvQKejdWJR
+Name - Sheryians Coding School
+
+Setup & Running commands
+------------------------------
+--> Documentation--- https://www.typescriptlang.org/docs/   (Search what ever you want)
+--> Downloading Ts Compailer -- npm i typescript -g 
+--> Check Node installed or not node --v and check typescript tsc --version
+--> Configuration  command tsc --init enter  --> it genetates tsconfig.json file
+--> Create one app.ts app and write code after you want to run give below comands it generates js file run it as usual node app.js or vs code top right arrow button.
+--> tsc --watch -> for running automatic update while code updated in vs code ts file or else you want to enter every time tsc app.ts
+
 Basic types                 03-12-2024
 -----------------------------------------------------------
 // Primitives
