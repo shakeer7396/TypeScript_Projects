@@ -1,3 +1,4 @@
+
 1. What is Testing ?
 A. Software Testing is the process of finding the errors of the software product before it is launched.
  Validate functioning and features of software
@@ -30,7 +31,7 @@ A. Create sum.js file and do code there && create sum.test.js for testing the co
 //Test function came from jest(); 3 parameters 1,2** Mandatory 3 is optional(setTimeout)
 //Test function takes three parameters 1-message, 2-call back func (write inside tesing output logic), 3-setTimeout for setting time for how much time after output will show. Add after the func },there);
 
---> test & expect both came from Jest (render,screen) both came from React-Testing-Library
+--> test & expect both came from Jest, (render,screen) both came from React-Testing-Library
 
 sum.test.js
 import sum from "./sum";
@@ -439,3 +440,64 @@ test("Snapshot Tesing",()=>{
 --> Koie errors mile by mistake huwe to app sahi kar sakte hai
 --> Koie errors nai aap ne jaan buj kar requirement change kare hai to just u press kardo
 --> Vo new code Snapshot file me update hojaye ga
+
+
+#-> 14 Important points for testing (Ye most imp hai)
+----------------------------------------
+1. What we should we test?
+2. What things we should not test?
+3. Important points
+
+1......
+--> Testing components RENDERING
+--> UI elements that we write
+--> Functions which we write
+--> API testing
+--> Event testing
+--> Props and states
+--> UI conditions testing | UI state testing
+
+2.... Avoid testing for
+--> External UI library code
+--> No need to test default function of JS and rest
+--> Sometime we should mock function rather than testing it in details
+
+3.....
+--> Do not write snapshot in starting of the project
+--> Run test case after completing your Functionality
+--> Make a standard for code coverage.
+
+
+#-> 15 Class Component method testing (class components me testing kaisa kare)
+----------------------------------------
+-> Why i am talking about class components?
+-> Make class components
+-> Install React-test-renderer
+-> Test class component method
+
+Create Users.js
+import React from 'react';
+ export default class Users extends React.Component{
+// User Function checking
+    getUserList(){
+        return "user list"
+    }
+
+    render(){
+        return(
+            <div>
+                <h2>Users Class Components</h2>
+            </div>
+        )
+    }
+ }
+
+ App.test.js
+ import Users from "./Users";
+import renderer from "react-test-renderer";
+// User Function Testing
+
+test("Class Components method Testing", () => {
+  const componentData = renderer.create(<Users />).getInstance(); //getting all data with instance
+  expect(componentData.getUserList()).toMatch("user list");
+});

@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
+import Users from "./Users";
 
 function App() {
-  const [add, setAdd] = useState("");
+  
   return (
     <div className="App">
-      {/*Changing the Event with the help of clicking event */}
-      <h1>SnapShot Testing</h1>
-      <button onClick={()=>setAdd("Updated Data showing in the Dom")}>Update Data</button>
-      <h2>{add}</h2>
+     <Users />
     </div>
   );
 }

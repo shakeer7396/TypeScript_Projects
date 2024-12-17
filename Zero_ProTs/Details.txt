@@ -52,6 +52,7 @@ let arr: number[] = [1,2,3,4,5]  // Its a right way
 // Tuples
 --------------------------------
 -> Tuples is also same as arrays but some syntex change but correct value type places
+-> A fixed-size array with specific types for each element
 
 Eg- let arr: [string, number] = ["Shaik", 99];
 console.log(arr); //output is ["Shaik", 99]
@@ -145,6 +146,7 @@ function abcd(a: number, b: string): void{} // and detailed there in front
 
 
 //Interfaces & Type Aliases [Object ka Shapes batana, Khud k user define types batana]
+---------------------------------------------
 * Defining Interfaces
 * Using interfaces to define object shapes
 * Extending interfaces
