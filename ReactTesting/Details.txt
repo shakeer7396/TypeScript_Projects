@@ -501,3 +501,7 @@ test("Class Components method Testing", () => {
   const componentData = renderer.create(<Users />).getInstance(); //getting all data with instance
   expect(componentData.getUserList()).toMatch("user list");
 });
+
+
+#-> 13 Snapshot testing (Ye most imp hai)
+----------------------------------------
