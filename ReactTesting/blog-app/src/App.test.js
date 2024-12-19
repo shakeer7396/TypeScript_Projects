@@ -1,8 +1,14 @@
-import Users from "./Users";
-import renderer from "react-test-renderer";
-// User Function Testing
+import { fireEvent, render,screen } from "@testing-library/react";
+import App from "./App";
+import handleOtherMethod from "./OtherFunMethod";
 
-test("Class Components method Testing", () => {
-  const componentData = renderer.create(<Users />).getInstance(); //getting all data with instance
-  expect(componentData.getUserList()).toMatch("user list");
+test("Functional Components Testcase-1", () => {
+  render(<App />);
+  const btn = screen.getByTestId("btn1");
+  fireEvent.click(btn);
+  expect(screen.getByText("Hello")).toBeInTheDocument();
 });
+
+test("Function Component Test OtherMethod",()=>{
+  expect(handleOtherMethod()).toMatch("Hi");
+})

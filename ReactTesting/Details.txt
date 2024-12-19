@@ -503,5 +503,15 @@ test("Class Components method Testing", () => {
 });
 
 
-#-> 13 Snapshot testing (Ye most imp hai)
+#-> 16 Functional Component method testing (FNC me testing kaise kare)
 ----------------------------------------
+-> Discus possible case for method testing
+-> Define the button, click event and method
+-> Test method with event
+-> Test method without event
+
+--> You no need to test inside functions component data 
+--> Compulsory you want to test then use 3 methods 
+--> 1- Use function in same component for single function only easy not for multiple function
+--> 2- Create a file and write another function code then import in app.js & test file also then test it
+--> 3- Use in Class Components like class -15 
