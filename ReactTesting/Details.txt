@@ -604,8 +604,33 @@ export default handleOtherMethod;
 -> Custom role
 
 
-#-> 20 RTL Query : getAllByRole (UI elements ko testing karte time multiple elements me use hota hai)
+#-> 20 RTL Query : getAllByRole (UI elements ko testing karte time multiple elements me label use hota hai testing karne k liye)
 ----------------------------------------
 -> Handle multiple elements
 -> Multiple buttons with the same role
 -> Multiple select optiom box with the same role
+
+
+#-> 21 RTL Query : getByLabelText (UI elements me single Chekbox ko testing karte time elements me Label use hota hai)
+----------------------------------------
+-> use of getByLabelText
+-> Test input field with getByLabelText
+-> Test checkbox with getByLabelText
+
+
+#-> 22 RTL Query : getAllByLabelText (UI elements me multiple Chekboxes ko testing karte time multiple elements me use karne use karte hai)
+----------------------------------------
+-> use of getAllByLabelText
+-> Test multiple input field
+-> Test multiple checkbox
+
+
+#-> 23 RTL Query : getByPlaceholderText      RTL Query : getAllByPlaceholderText
+ (UI elements me single & multiple placeholders ko testing karte time multiple elements me use karne use karte hai)
+----------------------------------------
+-> Use of getByPlaceholderText
+-> Use of getAllByPlaceholderText
+-> Test single input field
+-> Test multiple input field
+
+
