@@ -634,3 +634,128 @@ export default handleOtherMethod;
 -> Test multiple input field
 
 
+#-> 24 RTL Query : getByText          RTL Query : getAllByText
+(UI elements me single & multiple Text Related elements ko testing karte time and multiple elements me use karte time use karte hai)
+----------------------------------------
+-> Use of getByText
+-> Use of getAllByText
+-> Test Single button, h1 and p tags
+-> Test Multiple buttons, h1 and p tags
+
+
+#-> 25 RTL Query : getByTestId          RTL Query : getAllByTestId
+(UI elements me single & multiple Test Related elements ko testing karte time and multiple elements me use karte time use karte hai)
+----------------------------------------
+-> Use of getByTestId
+-> Use of getAllByTestId
+-> Test single elements with test id
+-> Test multiple elements with test id
+
+
+#-> 26 Overriding data-testid (UI elements me TestId ko overRide karke kaisa use karte hai)
+----------------------------------------
+-> Why need to override test id.
+-> How to override test id
+-> Test elements after override test id
+
+
+#-> 27 RTL Query : getByDisplayValue          RTL Query : getAllByDisplayValue
+(UI elements me single & multiple Display Related elements ko testing karte time and multiple elements me use karte time use karte hai)
+----------------------------------------
+-> Use of getByDisplayValue
+-> Use of getAllByDisplayValue
+-> Test single elements with getByDisplayValue
+-> Test multiple elements with getAllByDisplayValue
+
+
+#-> 28 RTL Query : getByTitle          RTL Query : getAllByTitle
+(UI elements me single & multiple Title Related elements ko testing karte time and multiple elements me use karte time use karte hai)
+----------------------------------------
+-> Use of getByTitle
+-> Use of getAllByTitle
+-> Test single elements with getByTitle
+-> Test multiple elements with getAllByTitle
+
+
+#-> 29 RTL Query : getByAltText          RTL Query : getAllByAltText
+(Images me single & multiple AltText Related elements ko testing karte time and multiple elements me use karte time use karte hai)
+----------------------------------------
+-> Use of getByAltText
+-> Use of getAllByAltText
+-> Test single image with getByAltText
+-> Test multiple images with getAllByAltText
+
+
+#-> 30 Priority Order for RTL Queries (Vupar k sab queries me kisko first use karna and konsa jyada priority hai, Iss k liye RTL Document me Queries k ander Order vise diye hai vusko check kar sakte hai)
+----------------------------------------
+
+-----------------------------------------------------------------------------------------------------
+
+#-> 31 Assertion Methods (What ever in the expect Checking is there are not it s called Assertion, methods are toBeInTheDocument and toHaveAttribute etc.)
+-----------------------------------------
+-> What are Assertion Methods
+-> Test elements with approx 10 Assertion Methods
+-> Assertion Not Methods
+
+
+#-> 32 TextMatch with String and Regex (Text ko match karne k liye use karte hai, Hit & Trail for Unknown Text Checking with String & Regex)
+---------------------------------------------
+-> What is text match
+-> Text Match with String
+-> Text Match with Regex
+
+
+#-> 33 TextMatch with Function (Same as above one just Change with Function)
+-----------------------------------------
+-> What is Text Match
+-> Text Match with Function
+
+--------------------------------------------------------------------------------------------------
+
+#-> 34 queryBy and queryAllBy (queryBy all methods same as working like getBy but one Extra thing hai ex- Login karne k Baad hi Logout dikhta & Logout hone ke bad hi Login dikhta [Using ternary true ? :] )
+----------------------------------------------
+-> Use of query by type
+-> How to test elements with query
+-> Examples of queryBy and queryAllBy
+-> Interview Questions
+
+------------------------------------------------------------------------------------------------------
+
+#-> 35 findBy and findAllBy (Page ko load karte ya update k baad load hota hai na UI element time leta hai like 5-10 sec, Jab vun elements ko findBy se test karte hai )
+------------------------------------------------
+-> use of find by
+-> Write React code
+-> Test elements with findBy
+-> Test elements with findByAll
+
+------------------------------------------------------------------------------------------------------
+
+#-> 36 Test with JS Query | Custom Query (First preference is get,query,find k methods hai but isko use nai karne k time pe Custom Query use kar sakte hai)
+----------------------------------------------
+-> Using with javaScript querySelector  and querySelectorAll
+
+#-> 37 Querying Within elements [Find element within an element]
+(Parent k saat Child ko be test karna hai jab use karte hai like <div>Parent <p> Child </p> </div>)
+-----------------------------------
+
+#-> 38 Click Event with User Event (User Event Library ek supportive library hai for React,Angular etc )
+-------------------------------------------
+-> Why we should use User event Library
+-> Update User event with state
+-> Write Click event with state
+-> Test click event with User event
+
+
+#-> 39 onChange Event Testing OR Keyboard interactions ()
+--------------------------------------------
+-> What is the keyboard interaction
+-> Write code for on-change event
+-> Test on change event
+-> Interview Question
+
+
+
+
+
+
+
