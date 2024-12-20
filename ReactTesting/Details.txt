@@ -568,4 +568,44 @@ const handleOtherMethod =()=>{
 export default handleOtherMethod;
 
 
+#-> 17 RTL Query (React Testing Library Query se UI elements k ko findout karte hai & baad me testing bi)
+----------------------------------------
+-> What is RTL Query
+-> Why need RTL Query
+-> Steps in Testing UI
+  -> Render Component
+  -> Find element and action
+  -> Assertion
+-> How RTL Query finds elements
+  -> By Element Type  -> By Element name  -> By Element id  -> By Test id etc.
+-> Type of RTL Query
+  --> Find Single Element
+      -> getBy  -> queryBy  -> findBy
+  --> Find Multiple elements
+      -> getAllBy  -> queryAllBy  -> findAllBy
 
+
+#-> 18 getByRole Query (UI elements ko testing karte time bahut use hoti hai)
+----------------------------------------
+-> What is the role in getByRole
+-> What is semantic elements
+  -> Button, headding tags and table are semantic elements
+  -> Div and span are not semantic elements
+-> Test testbox with getByRole
+  -> test box present are not  -> test box value  -> text box disable or not
+-> Test button with getByRole
+
+
+#-> 19 Multiple elements with Role Custom Role (Multiple elements k saat getByRole ko kaisa handle kar sakte)
+----------------------------------------
+-> Multiple elements with the same role issue
+-> Multiple buttons with role
+-> Multiple input box with role
+-> Custom role
+
+
+#-> 20 RTL Query : getAllByRole (UI elements ko testing karte time multiple elements me use hota hai)
+----------------------------------------
+-> Handle multiple elements
+-> Multiple buttons with the same role
+-> Multiple select optiom box with the same role
