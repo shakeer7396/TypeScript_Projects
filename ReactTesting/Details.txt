@@ -738,7 +738,7 @@ export default handleOtherMethod;
 (Parent k saat Child ko be test karna hai jab use karte hai like <div>Parent <p> Child </p> </div>)
 -----------------------------------
 
-#-> 38 Click Event with User Event (User Event Library ek supportive library hai for React,Angular etc )
+#-> 38 Click Event with User Event (User Event Library ek supportive library hai for using some special events in React,Angular etc. Isme Async & Await use karte, All Clear given in RTL Document)
 -------------------------------------------
 -> Why we should use User event Library
 -> Update User event with state
@@ -746,12 +746,78 @@ export default handleOtherMethod;
 -> Test click event with User event
 
 
-#-> 39 onChange Event Testing OR Keyboard interactions ()
+#-> 39 onChange Event Testing OR Keyboard interactions (Keyboard k help se jo changes or events karte hai vusko )
 --------------------------------------------
 -> What is the keyboard interaction
 -> Write code for on-change event
 -> Test on change event
 -> Interview Question
+
+
+#-> 40 act function (act function pehle state ko call karta baad me assertion means expect ko using async and await)
+----------------------------------------------
+-> Use of act function
+-> Issue before using act function
+-> Apply act function
+-> Interview Questions
+
+
+#-> 41 Test Component Props  (Props ko components me use karke kaisa test karte hai)
+---------------------------------------------
+-> Make Component
+-> Pass Props and Display on UI
+-> Write test case to test Props
+-> Interview Questions
+
+
+#-> 42 Functional Props Testing and Mocking  (Props ko Functions me kaisa bhejte and test kaisa karte with the help of Mocking)
+-----------------------------------------------
+-> Add Props and click event to Component
+-> Fucntion mocking in testing file
+-> Write test case to test functional Props
+-> Interview Questions
+
+
+#-> 43 Debuging in React testing library  (Testing karte time aane wale errors ko problems ko kaisa solve kare )
+-----------------------------------------------
+-> Automatic debugging
+-> prettyDom
+-> debug
+-> DEBUG_PRINT_LIMIT=10000 npm test
+-> logRoles
+
+
+#-> 44 Testing Playground on Chrome (Ye RTL k liye ek tool hai Test cases ko achha likhne k liye use)
+--------------------------------------------
+-> What is testing Playground (Its a Chrome Extension as working as a finding elements test case querie)
+-> How to install and use it
+-> Make test case query
+
+
+#-> 45 MSW and HTTP Request Testing ( Real Time data ko test karna diffuclt and expensive hota hai vusse Mock ki use se API data ku call karte hai)
+----------------------------------------------
+-> What is MSW?
+    -> Mostly we test rest API by mocking
+    -> MSW stands for Mock Service Worker
+    -> React testing library recommed to use MSW
+    -> We can mock api with jest also
+-> Use of MSW
+-> Why we mock API
+-> Why We should use MSW
+
+
+#-> 46 Call API for Testing (Make Dummi api data )
+-------------------------------------------------
+
+
+#-> 47 API Testing with MSW (API ki testing kaise karte hai)
+---------------------------------------------
+-> Install MSW
+-> Make Mock Server Folder
+-> Make server file
+-> Make server handler file
+-> Write code for API testing
+-> Call server in test setup file
 
 
 
