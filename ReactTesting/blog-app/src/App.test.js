@@ -1,23 +1,18 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import Button from "./Button";
-import Button2 from "./Button2";
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-//Button Created in Other seperate Component
-test("Button OnClick Event Checking", () => {
-  render(<Button />);
-  let btnClickEvent = screen.getByRole("button");
-  fireEvent.click(btnClickEvent);
-  expect(
-    screen.getByText("Updated Data Showing In The Screen")
-  ).toBeInTheDocument();
+test("getAllByRole Testing With Buttons", () => {
+  render(<App />);
+  const btn1 = screen.getAllByRole("button");
+  for(let i=0;i<btn1.length;i++){
+    expect(btn1[i]).toBeInTheDocument(); // you can do (btn1[0]) like that or run a for loop and get n number of outputs with using btn1[i]
+  } 
 });
 
-//Button -2 Created in Other Seperate Component
-test("Button OnClick Event Checking With Seperate Component", () => {
-  render(<Button2 />);
-  let ClickEvent = screen.getByRole("button");
-  fireEvent.click(ClickEvent);
-  expect(
-    screen.getByText("ClickEvent Checking With Another Functions")
-  ).toBeInTheDocument();
-});
+test("getAllByRole Testing With Select",()=>{
+  render(<App />);
+  const options= screen.getAllByRole("option");
+  for(let i=0;i<options.length;i++){
+    expect(options[i]).toBeInTheDocument();
+  }
+})

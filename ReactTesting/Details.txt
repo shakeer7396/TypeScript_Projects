@@ -682,11 +682,12 @@ export default handleOtherMethod;
 -> What is semantic elements
   -> Semantic kato Already pre-define values hate so means vusko ek values already hata like below
   -> Button, headding tags and table are semantic elements
-  -> Div and span are not semantic elements
+  -> Div and span are non semantic elements
 -> Test testbox with getByRole
   -> test box present are not  -> test box value  -> text box disable or not
 -> Test button with getByRole
 
+// Code Already done in above classes & Documentation also available
 
 #-> 19 Multiple elements with Role Custom Role (Multiple elements k saat getByRole ko kaisa handle kar sakte)
 ----------------------------------------
@@ -695,12 +696,98 @@ export default handleOtherMethod;
 -> Multiple input box with role
 -> Custom role
 
+App.js
+import React from "react";
+function App() {
+  return (
+    <div className="App">
+      <h1>Click Events With getByRole</h1>
+      <button>Click Me-1</button>
+      <button>Click Me-2</button>
+      <br />
+      <br />
+      <label htmlFor="test_input1">Input Field-1</label>
+      <input type="text" id="test_input1" />
+      <label htmlFor="test_input2">Input Field-2</label>
+      <input type="text" id="test_input2" />
+    </div>
+  );
+}
+export default App;
+
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+test("getByRole Testing", () => {
+  render(<App />);
+  //const btn1=screen.getByRole("button"); // aap 2 buttons use kare to error aata it works only one button
+  const btn1 = screen.getByRole("button", { name: "Click Me-1" }); //Aisa use kare to working properly
+  const btn2 = screen.getByRole("button", { name: "Click Me-2" });
+  expect(btn1).toBeInTheDocument();
+  expect(btn2).toBeInTheDocument();
+
+  const input1 = screen.getByRole("textbox", { name: "Input Field-1" }); // using with Label for input beacause no test inside the input
+  const input2 = screen.getByRole("textbox", { name: "Input Field-2" });
+  expect(input1).toBeInTheDocument();
+  expect(input2).toBeInTheDocument();
+});
+
+
 
 #-> 20 RTL Query : getAllByRole (UI elements ko testing karte time multiple elements me label use hota hai testing karne k liye)
 ----------------------------------------
 -> Handle multiple elements
 -> Multiple buttons with the same role
 -> Multiple select optiom box with the same role
+
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1>Click Events With getByRole</h1>
+      <button>Click Me-1</button>
+      <button>Click Me-2</button>
+      <button>Click Me-3</button>
+      <button>Click Me-4</button>
+      <button>Click Me-5</button>
+      <button>Click Me-6</button>
+      <br />
+      <br />
+      <select>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </div>
+  );
+}
+export default App;
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+test("getAllByRole Testing With Buttons", () => {
+  render(<App />);
+  const btn1 = screen.getAllByRole("button");
+  for(let i=0;i<btn1.length;i++){
+    expect(btn1[i]).toBeInTheDocument(); // you can do (btn1[0]) like that or run a for loop and get n number of outputs with using btn1[i]
+  } 
+});
+
+test("getAllByRole Testing With Select",()=>{
+  render(<App />);
+  const options= screen.getAllByRole("option");
+  for(let i=0;i<options.length;i++){
+    expect(options[i]).toBeInTheDocument();
+  }
+})
+
 
 
 #-> 21 RTL Query : getByLabelText (UI elements me single Chekbox ko testing karte time elements me Label use hota hai)
