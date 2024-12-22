@@ -307,6 +307,7 @@ test("Input Box OnChange Event Checking",()=>{
 -> Import component in test file
 -> Write code for test click event
 -> Run test case
+--> Seperate Components for buttons and Testing with a single Test file 
 
 // All Code with Single App.js Component 
 App.js
@@ -513,13 +514,14 @@ import {render} from "@testing-library/react";
 import App from "./App";
 test("Snapshot Tesing",()=>{
   const container = render(<App />)
-  expect(container).toMatchSnapshot();
+  expect(container).toMatchSnapshot(); 
 })
 
+--> render ko he ek variable me lena hai vusi ko expect me match karna hai
 --> test case run karte hi ye automatic se Snapshot file create kar leta hai
 --> Snapshot testing jab use karte hai pura app develop hogaya final deployment me jana hai vusse pehle Snapshot testing test karta hai kahi errors to miss nahi huwe check karne k liye.
 --> Koie errors mile by mistake huwe to app sahi kar sakte hai
---> Koie errors nai aap ne jaan buj kar requirement change kare hai to just u press kardo
+--> Koie errors nai aap ne jaan buj kar requirement change kare hai to just u press kardo terminal me
 --> Vo new code Snapshot file me update hojaye ga
 
 
@@ -540,7 +542,7 @@ test("Snapshot Tesing",()=>{
 
 2.... Avoid testing for
 --> External UI library code
---> No need to test default function of JS and rest
+--> No need to test default function of JS and jest
 --> Sometime we should mock function rather than testing it in details
 
 3.....
@@ -570,8 +572,7 @@ import React from 'react';
                 <h2>Users Class Components</h2>
             </div>
         )
-    }
- }
+        }}
 
  App.test.js
  import Users from "./Users";
@@ -580,9 +581,10 @@ import renderer from "react-test-renderer";
 
 test("Class Components method Testing", () => {
   const componentData = renderer.create(<Users />).getInstance(); //getting all data with instance
-  expect(componentData.getUserList()).toMatch("user list");
+  expect(componentData.getUserList()).toMatch("user list"); // calling the user class inside method
 });
 
+//Present Renderer .create is not working in updated version its debricated
 
 #-> 16 Functional Component method testing (FNC me testing kaise kare)
 ----------------------------------------
@@ -593,7 +595,7 @@ test("Class Components method Testing", () => {
 
 --> You no need to test inside functions component data 
 --> Compulsory you want to test then use 3 methods 
---> 1- Use function in same component for single function only easy not for multiple function
+--> 1- Use function in same component for single function only its a easy way, not for multiple function
 --> 2- Create a file and write another function code then import in app.js & test file also then test it
 --> 3- Use in Class Components like class -15 
 
@@ -657,19 +659,28 @@ export default handleOtherMethod;
   -> Render Component
   -> Find element and action
   -> Assertion
--> How RTL Query finds elements
+ [ test("Functional Components Testcase-1", () => { 
+  render(<App />);                                      // Render Component
+  const btn = screen.getByTestId("btn1");               // 2 lines are Find element & action
+  fireEvent.click(btn);
+  expect(screen.getByText("Hello")).toBeInTheDocument(); // This is Assertion
+});
+ ]
+
+-> How RTL Query finds elements ( Finding With the help below Queries)
   -> By Element Type  -> By Element name  -> By Element id  -> By Test id etc.
 -> Type of RTL Query
   --> Find Single Element
-      -> getBy  -> queryBy  -> findBy
+      -> 1. getBy  -> 2. queryBy  -> 3. findBy
   --> Find Multiple elements
-      -> getAllBy  -> queryAllBy  -> findAllBy
+      -> 1. getAllBy  -> 2. queryAllBy  -> 3. findAllBy
 
 
-#-> 18 getByRole Query (UI elements ko testing karte time bahut use hoti hai)
+#-> 18 getByRole Query (UI elements ko testing karte time bahut use hota hai)
 ----------------------------------------
 -> What is the role in getByRole
 -> What is semantic elements
+  -> Semantic kato Already pre-define values hate so means vusko ek values already hata like below
   -> Button, headding tags and table are semantic elements
   -> Div and span are not semantic elements
 -> Test testbox with getByRole
