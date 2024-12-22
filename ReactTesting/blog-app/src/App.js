@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
+import Button from "./Button";
+import Button2 from "./Button2";
 
-const App = () => {
-
+function App() {
   return (
-    <div>
-      <h1>First React Testing-Text</h1>
-      <input type="text" placeholder='Enter User Name' name='UserName' id='UserId' value="test" />
+    <div className="App">
+      <h1>Click Event checking with seperate multiple components</h1>
+      <Button />
+      <Button2 />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

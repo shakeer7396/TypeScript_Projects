@@ -190,7 +190,7 @@ describe("UI test case group",()=>{
     expect(checkInput).toHaveAttribute("name","username");
   })
 })
---> Alag alag groups banana konsa group hona vo ek hi run kar sakte hai time ko save karna hai
+--> Alag alag groups banana konsa group hona vo ek hi run kar sakte hai time ko save karna hoto
 
 //Seperate group for API test cases with Another describe method
 describe("API test case group",()=>{
@@ -212,7 +212,7 @@ describe("API test case group",()=>{
 })
 
 
---> Only means bahut test cases hai Sirf ek hi ko run karna chahte ho then use this all skip only 1 running 
+--> Only means bahut test cases hai Sirf ek hi ko run karna chahte ho then add only after the describe name like [describe only ()] see below this one skips all only 1 running 
 
 describe.only("API test case group",()=>{
   test("API test case 1",()=>{
@@ -231,10 +231,13 @@ describe.only("API test case group",()=>{
     expect(checkInput).toHaveAttribute("name","username");
   })
 })
---> Skip b kar sakte ek group me bahut errors hai vusko run nai karna no time jab use karte
-*** Skip also same as above just change [describe.skip]
+--> Skip b kar sakte ek group me bahut errors hai vusko run nai karna hai no time aur dusre group ko run karna hai jab use karte
+*** Skip also same as only bas text change karna place same just change [describe.skip()]
 
 --> Ek Describe k ander another ko Describe ko use karna both and One group k ander another group ko same aisa hi add kae sakte hai both are working
+
+--> Nested Describe k ander Single test case ku b skip & only kar sakte hai 
+--> Nested Describe k ander Single describe ko b Skip kar sakte hai and only b kar sakte hai all working
 
 describe.skip("API test case group",()=>{
   test("API test case 1",()=>{
@@ -245,6 +248,11 @@ describe.skip("API test case group",()=>{
   //Nested Describe method with example
   describe("Inner Describe Method",()=>{
     test("Fetching test case 1",()=>{
+      render(<App />)
+      let checkInput = screen.getByRole("textbox"); //input is showing or not checking
+      expect(checkInput).toHaveAttribute("name","username");
+    })
+    test.skip("Fetching test case 2",()=>{
       render(<App />)
       let checkInput = screen.getByRole("textbox"); //input is showing or not checking
       expect(checkInput).toHaveAttribute("name","username");
@@ -269,8 +277,10 @@ function App() {
   const [add, setAdd] = useState("");
   return (
     <div className="App">
+    <h1>Change Event Checking</h1>
       {/*Changing the value with the input box using onChange */}
-      <input type="text" value={add} onChange={(e) => setAdd(e.target.value+" test")} />//Without default also use only input without using (+" test") 
+      <input type="text" value={add} onChange={(e) => setAdd(e.target.value+" Shaik")} />
+      {/* Without default also use only input without using (+" Shaik") */}
     </div>
   );
 }
@@ -281,13 +291,13 @@ App.test.js
 import App from "./App";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-it("Input onChange event testing", () => {
-  render(<App />);
-  let InpuOnChangetest = screen.getByRole("textbox");
-  // fireEvent will help to changing the value 
-  fireEvent.change(InpuOnChangetest, { target: { value: "a" } }); // Targetting the value
-  expect(InpuOnChangetest.value).toBe("a test"); // Without default also use only "a"
-});
+test("Input Box OnChange Event Checking",()=>{
+  render(<App />)
+  let InputChangeEvent =screen.getByRole("textbox");
+  // fireEvent will help to changing the value in the input for testing not UI Showing
+  fireEvent.change(InputChangeEvent,{target: {value:"Shakeer"}}) // Targetting the value With default
+  expect(InputChangeEvent.value).toBe("Shakeer Shaik") // Without default also use only "Shakeer"
+})
 
 
 #-> 10 Test Click Event With Button  (Button Event se kya use kar sakte dekhte hai)
@@ -295,9 +305,10 @@ it("Input onChange event testing", () => {
 -> Make button and state in the component
 -> Update state with button click event
 -> Import component in test file
--> Write code for tesrt click event
+-> Write code for test click event
 -> Run test case
 
+// All Code with Single App.js Component 
 App.js
 import React, { useState } from "react";
 import "./App.css";
@@ -327,6 +338,76 @@ it("Click event test case",()=>{
   expect(screen.getByText("Updated Data showing in the Dom")).toBeInTheDocument(); //expt Dom output
 
 })
+
+// Seperate Components With Adding in App.js for showing UI & Writting Test cases in App.test.js testing
+--------------------------------------------
+Button.js
+import React, { useState } from "react";
+function Button() {
+  const [add, setAdd] = useState("");
+  return (
+    <div className="Button">
+      <h1>Click Event Checking With Button - 1</h1>
+      <button type="submit" onClick={()=>setAdd("Updated Data Showing In The Screen")} >Button - 1</button>
+      <h2>{add}</h2>
+    </div>
+  );
+}
+export default Button;
+
+Button2.js
+import React, { useState } from "react";
+function Button2() {
+  const [add, setAdd] = useState("");
+  return (
+    <div className="Button">
+      <h1>Click Event Checking With Button - 2</h1>
+      <button type="submit" onClick={()=>setAdd("ClickEvent Checking With Another Functions")} >Button - 2</button>
+      <h2>{add}</h2>
+    </div>
+  );
+}
+export default Button2;
+
+App.test.js
+import { fireEvent, render, screen } from "@testing-library/react";
+import Button from "./Button";
+import Button2 from "./Button2";
+
+//Button Created in Other seperate Component
+test("Button OnClick Event Checking", () => {
+  render(<Button />);
+  let btnClickEvent = screen.getByRole("button");
+  fireEvent.click(btnClickEvent);
+  expect(
+    screen.getByText("Updated Data Showing In The Screen")
+  ).toBeInTheDocument();
+});
+
+//Button -2 Created in Other Seperate Component
+test("Button OnClick Event Checking With Seperate Component", () => {
+  render(<Button2 />);
+  let ClickEvent = screen.getByRole("button");
+  fireEvent.click(ClickEvent);
+  expect(
+    screen.getByText("ClickEvent Checking With Another Functions")
+  ).toBeInTheDocument();
+});
+
+App.js
+import React from "react";
+import Button from "./Button";
+import Button2 from "./Button2";
+function App() {
+  return (
+    <div className="App">
+      <h1>Click Event checking with seperate multiple components</h1>
+      <Button />
+      <Button2 />
+    </div>
+  );
+}
+export default App;
 
 
 #-> 11 File and Folder naming conention  (File and folder ka name kaisa hona chahiye)
