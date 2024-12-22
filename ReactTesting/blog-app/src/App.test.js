@@ -1,18 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("getAllByRole Testing With Buttons", () => {
-  render(<App />);
-  const btn1 = screen.getAllByRole("button");
-  for(let i=0;i<btn1.length;i++){
-    expect(btn1[i]).toBeInTheDocument(); // you can do (btn1[0]) like that or run a for loop and get n number of outputs with using btn1[i]
-  } 
-});
+// ONLY ONE TYPE OF TEST CASE WILL WORK AT A BOTH ARE NOT WORKING
+//Single Input Placeholder 
+// test("getByPlaceholder Text Testing",()=>{
+//   render(<App />)
+//   const input=screen.getByPlaceholderText("Enter User Name")
+//     expect(input).toBeInTheDocument();
+//     expect(input).toHaveValue("Shakeer")
+// })
 
-test("getAllByRole Testing With Select",()=>{
-  render(<App />);
-  const options= screen.getAllByRole("option");
-  for(let i=0;i<options.length;i++){
-    expect(options[i]).toBeInTheDocument();
+// Multiple Input Placeholder
+test("getAllByPlaceholder Text Testing",()=>{
+  render(<App />)
+  const input2=screen.getAllByPlaceholderText("Enter User Name")
+  for(let i=0;i<input2.length;i++){
+    expect(input2[i]).toBeInTheDocument();
+    expect(input2[i]).toHaveValue("Shakeer")
   }
 })

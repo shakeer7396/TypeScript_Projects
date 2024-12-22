@@ -789,19 +789,101 @@ test("getAllByRole Testing With Select",()=>{
 })
 
 
-
 #-> 21 RTL Query : getByLabelText (UI elements me single Chekbox ko testing karte time elements me Label use hota hai)
 ----------------------------------------
 -> use of getByLabelText
 -> Test input field with getByLabelText
 -> Test checkbox with getByLabelText
 
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1> Query With getByLabelText</h1>
+      <label htmlFor="user-text">User Name</label>
+      <input type="text" id="user-text" defaultValue={"Shakeer"} /> {/*Previously we know input text will test only with the help of label*/}
+      <br />
+      <br />
+      <label htmlFor="check-box">Skills Checkbox</label>
+      <input type ="checkbox" id="check-box" defaultChecked={true}/>
+    </div>
+  );
+}
+export default App;
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+test("InputText Label Testing",()=>{
+  render(<App />)
+  const input=screen.getByLabelText("User Name")
+  expect(input).toBeInTheDocument();
+  expect(input).toHaveValue("Shakeer")
+})
+
+test("InputText Checkbox Label Testing",()=>{
+  render(<App />)
+  const checkbox=screen.getByLabelText("Skills Checkbox")
+  expect(checkbox).toBeInTheDocument();
+  expect(checkbox).toBeChecked();
+})
 
 #-> 22 RTL Query : getAllByLabelText (UI elements me multiple Chekboxes ko testing karte time multiple elements me use karne use karte hai)
 ----------------------------------------
 -> use of getAllByLabelText
 -> Test multiple input field
 -> Test multiple checkbox
+
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1> Query With getByLabelText</h1>
+      <label htmlFor="user-text-1">User Name-1</label>
+      <input type="text" id="user-text-1" defaultValue={"Shakeer"} /> {/*Previously we know input text will test only with the help of label*/}
+      <label htmlFor="user-text-2">User Name-2</label>
+      <input type="text" id="user-text-2" defaultValue={"Shakeer"} />
+      <label htmlFor="user-text-3">User Name-3</label>
+      <input type="text" id="user-text-3" defaultValue={"Shakeer"} />
+      <br />
+      <br />
+      <label htmlFor="check-box-1">Skills Checkbox-1</label>
+      <input type ="checkbox" id="check-box-1" defaultChecked={true}/>
+      <label htmlFor="check-box-2">Skills Checkbox-2</label>
+      <input type ="checkbox" id="check-box-2" defaultChecked={true}/>
+      <label htmlFor="check-box-3">Skills Checkbox-3</label>
+      <input type ="checkbox" id="check-box-3" defaultChecked={true}/>
+    </div>
+  );
+}
+export default App;
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+test("InputText Label Testing",()=>{
+  render(<App />)
+  const input=screen.getAllByLabelText("User Name-1")
+  for(let i=0;i<input.length;i++){
+    expect(input[i]).toBeInTheDocument();
+    expect(input[i]).toHaveValue("Shakeer")
+  }
+})
+
+test("InputText Checkbox Label Testing",()=>{
+  render(<App />)
+  const checkbox=screen.getAllByLabelText("Skills Checkbox-1")
+  for(let i=0;i<checkbox.length;i++){
+    expect(checkbox[i]).toBeInTheDocument();
+    expect(checkbox[i]).toBeChecked();
+  }
+})
 
 
 #-> 23 RTL Query : getByPlaceholderText      RTL Query : getAllByPlaceholderText
@@ -811,6 +893,51 @@ test("getAllByRole Testing With Select",()=>{
 -> Use of getAllByPlaceholderText
 -> Test single input field
 -> Test multiple input field
+
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1> Query With getByPlaceholderText & getAllByPlaceholderText</h1>
+      <label htmlFor="user-text-1">User Name-1</label>
+      <input type="text" id="user-text-1" placeholder="Enter User Name"  defaultValue={"Shakeer"} /> {/*Previously we know input text will test only with the help of label*/}
+      
+      {/* ONLY ONE TYPE OF TEST CASE WILL WORK AT A BOTH ARE NOT WORKING */}
+
+       <label htmlFor="user-text-2">User Name-2</label>
+      <input type="text" id="user-text-2" placeholder="Enter User Name" defaultValue={"Shakeer"} />
+      <label htmlFor="user-text-3">User Name-3</label>
+      <input type="text" id="user-text-3" placeholder="Enter User Name" defaultValue={"Shakeer"} />
+      
+    </div>
+  );
+}
+export default App;
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+// ONLY ONE TYPE OF TEST CASE WILL WORK AT A BOTH ARE NOT WORKING
+//Single Input Placeholder 
+// test("getByPlaceholder Text Testing",()=>{
+//   render(<App />)
+//   const input=screen.getByPlaceholderText("Enter User Name")
+//     expect(input).toBeInTheDocument();
+//     expect(input).toHaveValue("Shakeer")
+// })
+
+// Multiple Input Placeholder
+test("getAllByPlaceholder Text Testing",()=>{
+  render(<App />)
+  const input2=screen.getAllByPlaceholderText("Enter User Name")
+  for(let i=0;i<input2.length;i++){
+    expect(input2[i]).toBeInTheDocument();
+    expect(input2[i]).toHaveValue("Shakeer")
+  }
+})
 
 
 #-> 24 RTL Query : getByText          RTL Query : getAllByText
