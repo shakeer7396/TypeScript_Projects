@@ -68,7 +68,7 @@ import App from './App';
 
 test('renders learn react link', () => {    // TEST FUNCTION WITH 3 PARAMETERS
   render(<App />); // RENDERING THE COMPONENT WITH NAME
-  const linkElement = screen.getByText(/learn react/i);     // SCREEN PE JO HAI VUSKE BASE PE TEST KARNA LIKE learn react inside this component showing in the screen RUNS PASS OR FAIL
+  const linkElement = screen.getByText(/learn react/i);     // SCREEN PE JO HAI VUSKE BASE PE TEST KARNA LIKE learn react inside this component showing in the screen RUNS PASS OR FAIL and i checking Capial,small also.
   expect(linkElement).toBeInTheDocument();  // EXPECTED DOCUMENT ME JO HAI VO TEST KARNA CHAHIYE
 });
 
@@ -544,7 +544,7 @@ function App() {
 
 export default App;
 
-App.tesst.js
+App.test.js
 import { fireEvent, render,screen } from "@testing-library/react";
 import App from "./App";
 import handleOtherMethod from "./OtherFunMethod";

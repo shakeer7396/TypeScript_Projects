@@ -1,14 +1,21 @@
-import { fireEvent, render,screen } from "@testing-library/react";
-import App from "./App";
-import handleOtherMethod from "./OtherFunMethod";
+import {render,screen} from "@testing-library/react"
+import App from "./App"
 
-test("Functional Components Testcase-1", () => {
-  render(<App />);
-  const btn = screen.getByTestId("btn1");
-  fireEvent.click(btn);
-  expect(screen.getByText("Hello")).toBeInTheDocument();
-});
+test("First Text Testing",()=>{
+  render(<App />)
+  let InputCheck =screen.getByRole("textbox");
+  let InputPlaceholder = screen.getByPlaceholderText("Enter User Name");
 
-test("Function Component Test OtherMethod",()=>{
-  expect(handleOtherMethod()).toMatch("Hi");
+  expect(InputCheck).toBeInTheDocument();
+  expect(InputPlaceholder).toBeInTheDocument();
+  
+})
+
+it("Second Test Case Checking",()=>{
+  render(<App />)
+  let InputCheck =screen.getByRole("textbox");
+  expect(InputCheck).toHaveAttribute("name","UserName");
+  expect(InputCheck).toHaveAttribute("id","UserId");
+  expect(InputCheck).toHaveAttribute("value","test");
+
 })
