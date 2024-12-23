@@ -584,7 +584,7 @@ test("Class Components method Testing", () => {
   expect(componentData.getUserList()).toMatch("user list"); // calling the user class inside method
 });
 
-//Present Renderer .create is not working in updated version its debricated
+//Present Renderer.create is not working in updated version its debricated
 
 #-> 16 Functional Component method testing (FNC me testing kaise kare)
 ----------------------------------------
@@ -904,7 +904,7 @@ function App() {
       <label htmlFor="user-text-1">User Name-1</label>
       <input type="text" id="user-text-1" placeholder="Enter User Name"  defaultValue={"Shakeer"} /> {/*Previously we know input text will test only with the help of label*/}
       
-      {/* ONLY ONE TYPE OF TEST CASE WILL WORK AT A BOTH ARE NOT WORKING */}
+      {/* ONLY ONE TYPE OF TEST CASE WILL WORK AT A TIME BOTH ARE NOT WORKING */}
 
        <label htmlFor="user-text-2">User Name-2</label>
       <input type="text" id="user-text-2" placeholder="Enter User Name" defaultValue={"Shakeer"} />
@@ -920,7 +920,7 @@ App.test.js
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-// ONLY ONE TYPE OF TEST CASE WILL WORK AT A BOTH ARE NOT WORKING
+// ONLY ONE TYPE OF TEST CASE WILL WORK AT A TIME BOTH ARE NOT WORKING
 //Single Input Placeholder 
 // test("getByPlaceholder Text Testing",()=>{
 //   render(<App />)
@@ -947,6 +947,63 @@ test("getAllByPlaceholder Text Testing",()=>{
 -> Use of getAllByText
 -> Test Single button, h1 and p tags
 -> Test Multiple buttons, h1 and p tags
+
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1> Query With getByText</h1>
+      <button>Click Me</button>
+      <h1 id="h1_tag">Get By Text</h1>
+      <p className="ptag" id="p_tag">
+        Testing
+      </p>
+
+      {/* <h1> Query getAllByText</h1>
+      <button>Click Me</button>
+      <h1>Get By Text</h1>
+      <p>Testing</p>
+
+      <button>Click Me</button>
+      <h1>Get By Text</h1>
+      <p>Testing</p> */}
+    </div>
+  );
+}
+export default App;
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+test("Testing with getByText for single element", () => {
+  render(<App />);
+  const text = screen.getByText("Click Me");
+  const h1 = screen.getByText("Get By Text");
+  const p = screen.getByText("Testing");
+  expect(text).toBeInTheDocument();
+  expect(h1).toBeInTheDocument();
+  expect(p).toBeInTheDocument();
+  expect(p).toHaveClass("ptag");
+  expect(h1).toHaveAttribute("id");
+  expect(p).toHaveAttribute("id","p_tag");
+});
+
+// If you want write seperate test cases for h1 & p
+// test("Testing with getAllByText for multiple element",()=>{
+//   render(<App />)
+//   const text=screen.getAllByText("Click Me");
+//   const h1 =screen.getAllByText("Get By Text")
+//   const p =screen.getAllByText("Testing")
+//   for(let i=0;i<text.length;i++){
+//     expect(text[i]).toBeInTheDocument();
+//     expect(h1[i]).toBeInTheDocument();
+//     expect(p[i]).toBeInTheDocument();
+//   }
+
+// })
 
 
 #-> 25 RTL Query : getByTestId          RTL Query : getAllByTestId

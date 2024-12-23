@@ -1,21 +1,29 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-// ONLY ONE TYPE OF TEST CASE WILL WORK AT A BOTH ARE NOT WORKING
-//Single Input Placeholder 
-// test("getByPlaceholder Text Testing",()=>{
-//   render(<App />)
-//   const input=screen.getByPlaceholderText("Enter User Name")
-//     expect(input).toBeInTheDocument();
-//     expect(input).toHaveValue("Shakeer")
-// })
+test("Testing with getByText for single element", () => {
+  render(<App />);
+  const text = screen.getByText("Click Me");
+  const h1 = screen.getByText("Get By Text");
+  const p = screen.getByText("Testing");
+  expect(text).toBeInTheDocument();
+  expect(h1).toBeInTheDocument();
+  expect(p).toBeInTheDocument();
+  expect(p).toHaveClass("ptag");
+  expect(h1).toHaveAttribute("id");
+  expect(p).toHaveAttribute("id","p_tag");
+});
 
-// Multiple Input Placeholder
-test("getAllByPlaceholder Text Testing",()=>{
-  render(<App />)
-  const input2=screen.getAllByPlaceholderText("Enter User Name")
-  for(let i=0;i<input2.length;i++){
-    expect(input2[i]).toBeInTheDocument();
-    expect(input2[i]).toHaveValue("Shakeer")
-  }
-})
+// If you want write seperate test cases for h1 & p
+// test("Testing with getAllByText for multiple element",()=>{
+//   render(<App />)
+//   const text=screen.getAllByText("Click Me");
+//   const h1 =screen.getAllByText("Get By Text")
+//   const p =screen.getAllByText("Testing")
+//   for(let i=0;i<text.length;i++){
+//     expect(text[i]).toBeInTheDocument();
+//     expect(h1[i]).toBeInTheDocument();
+//     expect(p[i]).toBeInTheDocument();
+//   }
+
+// })
