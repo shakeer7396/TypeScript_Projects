@@ -1014,12 +1014,75 @@ test("Testing with getByText for single element", () => {
 -> Test single elements with test id
 -> Test multiple elements with test id
 
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1> Query With getByTestId</h1>
+      <div data-testid="div-test-id">Div Testing With TestId</div>
+      <h1 data-testid="h1-test-id">H1 tag-1 Testing with TestId</h1>
+      <h1 data-testid="h1-test-id">H1 tag-2 Testing with TestId</h1>    
+    </div>
+  );
+}
+export default App;
+
+
+App.test.js
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+// Single values not same
+test("getByTestId testing with id in div",()=>{
+  render(<App />)
+  const div1 = screen.getByTestId("div-test-id");
+  expect(div1).toBeInTheDocument();
+})
+
+// multiple same values
+test("getAllByTestId testing with id in h1",()=>{
+  render(<App />)
+  const h1= screen.getAllByTestId("h1-test-id");
+  for(let i=0;i<h1.length;i++){
+    expect(h1[i]).toBeInTheDocument();
+  }
+})
+
 
 #-> 26 Overriding data-testid (UI elements me TestId ko overRide karke kaisa use karte hai)
 ----------------------------------------
 -> Why need to override test id.
 -> How to override test id
 -> Test elements after override test id
+
+App.js
+import React from "react";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <h1> Query With getByTestId</h1>
+      {/* Every element have unique id its first priority means id="divTag" but adding another attribute id for any other purpose like (data-testid="Anything add") you Over ride this like (element-testid="div-test-id") then use configure in testing file then only it will work */}
+      <div id="divTag" element-testid="div-test-id" >Div Testing With TestId</div>
+         
+    </div>
+  );
+}
+export default App;
+
+App.test.js
+import { render, screen, configure } from "@testing-library/react";
+import App from "./App";
+
+configure({testIdAttribute:"element-testid"}); // App custom id use karna haito ya ha configure karna jaroori hai
+
+test("getByTestId testing with id in div",()=>{
+  render(<App />)
+  const div1 = screen.getByTestId("div-test-id");
+  expect(div1).toBeInTheDocument();
+})
 
 
 #-> 27 RTL Query : getByDisplayValue          RTL Query : getAllByDisplayValue
@@ -1054,7 +1117,7 @@ test("Testing with getByText for single element", () => {
 
 -----------------------------------------------------------------------------------------------------
 
-#-> 31 Assertion Methods (What ever in the expect Checking is there are not it s called Assertion, methods are toBeInTheDocument and toHaveAttribute etc.)
+#-> 31 Assertion Methods (What ever in the expect Checking the output is equal are not it is called Assertion, methods are toBeInTheDocument and toHaveAttribute etc.)
 -----------------------------------------
 -> What are Assertion Methods
 -> Test elements with approx 10 Assertion Methods
