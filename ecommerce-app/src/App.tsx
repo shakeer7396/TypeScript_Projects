@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -18,11 +17,6 @@ import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
-  const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
-
-  // const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  //   return isLoggedIn ? children : <Navigate to="/login" />;
-  // };
 
   return (
     <Router>
