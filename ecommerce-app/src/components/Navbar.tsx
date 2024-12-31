@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
+
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -129,3 +130,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
