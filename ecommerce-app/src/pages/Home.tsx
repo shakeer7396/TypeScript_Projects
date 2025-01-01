@@ -46,7 +46,6 @@ const Home: React.FC = () => {
         <div className=" flex justify-center items-center text-center">
           <h3>Loading products...</h3>
           <div className="loader border-t-4 border-blue-500 rounded-full w-12 h-12 animate-spin"></div>{" "}
-          {/* Add a CSS spinner if required */}
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -79,3 +78,4 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
