@@ -48,7 +48,7 @@ const Login: React.FC = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded"
+          className="bg-blue-600 text-white py-2 px-4 rounded flex justify-center"
         >
           Login
         </button>
