@@ -92,5 +92,3 @@ const MensClothes: React.FC = () => {
 };
 
 export default MensClothes;
-
-
