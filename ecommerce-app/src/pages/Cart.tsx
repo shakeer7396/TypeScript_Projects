@@ -95,12 +95,15 @@ const Cart: React.FC = () => {
         </div>
       )}
       {cartItems.length > 0 && (
-        <button
+        <div className="flex item-center justify-center">
+          <button
           onClick={() => navigate("/checkout")}
           className="mt-4 bg-blue-600 text-white py-2 px-4 rounded"
         >
           Checkout
         </button>
+        </div>
+        
       )}
     </div>
   );
