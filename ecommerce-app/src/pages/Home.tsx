@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("/products");
+        const response = await axios.get("https://fakestoreapi.com/products");
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
