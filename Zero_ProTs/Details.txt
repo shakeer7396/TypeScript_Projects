@@ -82,7 +82,7 @@ let a;
 a= 4;
 a="Shaik";
 if(typesof a === "string"){
-a.toUpperCase();  // it takes any not clarity 
+a.toUpperCase();  // it takes any not clarity jo last me define kare vahi print karta
 }
 
 // Unknown (You have to tell any one compulsory string or number)
@@ -282,7 +282,7 @@ class User{
     constructor(public name:string, public age:number, public gender?:string){}
 }
 let a=new User("Shaik",25,'Male');
-let b=new User("sham",20) // there without asking gender its running
+let b=new User("sham",20) // here without asking gender its running
 
 
 4. Constructors ( It is a machine, product maker, )
@@ -482,7 +482,7 @@ Functions()
 --> Functions khud chalte nahi hai ham jab bole tab chalte hai
 --> Login ka code ek function me likh diye vuso jitne baar bi chahe jaha chahe vaha use karlo
 
-1. Funcrtion types
+1. Function types
 -----------------------------------
 //-> [Its a javaScript function working] 
 
@@ -735,7 +735,7 @@ console.log(abcd("Helllo"));
 console.log(abcd(1234));
 console.log(abcd(true));
 
-A. instanceof------------------
+B. instanceof------------------
 
 // Hamare paas dono classes ho ham dono ke instance ko ek function me paas karsakte ho 
 class TvKaRemote {
