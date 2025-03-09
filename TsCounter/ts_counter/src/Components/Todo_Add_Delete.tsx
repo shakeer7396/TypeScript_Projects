@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 
-interface Todo {
-  id: number;
-  text: string;
-}
-
 const Todo_Add_Delete = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([]);
   const [input, setInput] = useState<string>("");
 
   const handleAddTodo = () => {
     if (input.trim()) {
-      const newTodo: Todo = { id: Date.now(), text: input };
+      const newTodo: ITodo = { id: Date.now(), text: input };
       setTodos([...todos, newTodo]);
       setInput("");
     }
@@ -61,3 +56,9 @@ const Todo_Add_Delete = () => {
 };
 
 export default Todo_Add_Delete;
+
+
+interface ITodo {
+  id: number;
+  text: string;
+}
