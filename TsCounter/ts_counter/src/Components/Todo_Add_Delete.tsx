@@ -57,7 +57,6 @@ const Todo_Add_Delete = () => {
 
 export default Todo_Add_Delete;
 
-
 interface ITodo {
   id: number;
   text: string;
